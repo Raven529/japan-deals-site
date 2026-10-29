@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>日本薅羊毛情报站</title><style>
+:root{--sky:#8fc3e8;--sky2:#d8eefb;--cream:#faf3e0;--paper:#fffdf4;--ink:#3c4a38;--ink2:#6b7a63;--green:#4a7c59;--green2:#6aa877;--deep:#2f5d3a;--gold:#e8a54b;--gold2:#f6d186;--line:#e6d7b4;--wood:#a9743f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:linear-gradient(180deg,var(--sky2) 0,#eef7e8 340px,var(--cream) 720px);font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Noto Sans JP","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(rgba(232,165,75,.16) 1.6px,transparent 1.7px),radial-gradient(rgba(106,168,119,.14) 1.4px,transparent 1.5px);background-size:130px 130px,190px 190px;background-position:0 0,60px 80px;z-index:1}
+::selection{background:var(--gold2);color:var(--deep)}
+.hero{position:relative;padding:76px 20px 92px;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(84,140,180,.28) 0%,rgba(250,243,224,0) 42%,rgba(250,243,224,.16) 78%,rgba(250,243,224,.55) 100%)}
+.cloud{position:absolute;background:#fff;border-radius:999px;opacity:.88;filter:blur(1px);animation:drift linear infinite;z-index:2}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud.c1{width:120px;height:34px;top:56px;left:0;animation-duration:95s}
+.cloud.c1::before{width:52px;height:52px;top:-26px;left:20px}.cloud.c1::after{width:38px;height:38px;top:-16px;left:64px}
+.cloud.c2{width:84px;height:24px;top:128px;left:0;animation-duration:130s;animation-delay:-60s;opacity:.75}
+.cloud.c2::before{width:38px;height:38px;top:-19px;left:14px}.cloud.c2::after{width:28px;height:28px;top:-12px;left:46px}
+.cloud.c3{width:150px;height:40px;top:26px;left:0;animation-duration:160s;animation-delay:-110s;opacity:.65}
+.cloud.c3::before{width:64px;height:64px;top:-32px;left:26px}.cloud.c3::after{width:46px;height:46px;top:-20px;left:82px}
+@keyframes drift{from{transform:translateX(-22vw)}to{transform:translateX(112vw)}}
+.hills{position:absolute;left:0;right:0;bottom:-2px;width:100%;height:86px;z-index:2}
+.hero .inner{position:relative;z-index:3;max-width:1060px;margin:0 auto}
+.kicker{display:inline-block;background:rgba(255,253,244,.85);color:var(--deep);letter-spacing:.28em;font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(47,93,58,.35);box-shadow:0 4px 14px rgba(47,93,58,.18)}
+h1{font-size:clamp(32px,6vw,50px);line-height:1.22;margin:16px 0 12px;font-weight:800;color:#fff;text-shadow:0 2px 0 rgba(47,93,58,.35),0 10px 28px rgba(31,64,40,.45)}
+h1 .gold{background:linear-gradient(92deg,#fff3c4,#ffd98a 55%,#f2a950);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 2px 10px rgba(120,72,10,.35))}
+.sub{color:#fdfaf0;font-size:15.5px;line-height:1.8;max-width:660px;margin:0;text-shadow:0 1px 8px rgba(31,64,40,.55);font-weight:600}
+.stats{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+.stat{background:rgba(255,253,244,.88);border:1.5px solid rgba(47,93,58,.25);border-radius:18px;padding:10px 18px 9px;box-shadow:0 8px 20px rgba(47,93,58,.16);backdrop-filter:blur(6px)}
+.stat b{display:block;font-size:22px;color:var(--deep)}.stat span{font-size:12px;color:var(--ink2);letter-spacing:.06em}
+.bar{position:sticky;top:0;z-index:20;background:rgba(250,243,224,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:2px solid rgba(74,124,89,.18)}
+.bar .inner{max-width:1060px;margin:0 auto;display:flex;gap:9px;flex-wrap:wrap;padding:12px 20px;align-items:center}
+.chip{color:var(--deep);background:var(--paper);border:1.5px solid rgba(74,124,89,.4);padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:700;text-decoration:none;transition:all .25s;box-shadow:0 2px 6px rgba(74,124,89,.12)}
+.chip:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 8px 16px rgba(74,124,89,.22);background:#fff}
+.chip.active{background:linear-gradient(180deg,var(--green2),var(--green));color:#fff;border-color:var(--deep);box-shadow:0 8px 18px rgba(47,93,58,.35)}
+.chip.right{margin-left:auto;color:#8a5a1e;border-color:rgba(169,116,63,.5);background:#fdf0d2}
+.chip.right:hover{background:#fbe7b8}
+.notice{max-width:1060px;margin:20px auto 0;padding:0 20px;position:relative;z-index:3}
+.notice p{margin:0;background:#fff8dd;border:1.5px dashed rgba(169,116,63,.55);color:#7a5c22;border-radius:16px;padding:11px 16px;font-size:13px;line-height:1.65;box-shadow:0 4px 12px rgba(169,116,63,.10)}
+main{max-width:1060px;margin:0 auto;padding:22px 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;position:relative;z-index:3}
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 6px 18px rgba(96,84,40,.10);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.card:hover{transform:translateY(-5px) rotate(-.2deg);border-color:rgba(232,165,75,.75);box-shadow:0 20px 38px rgba(96,84,40,.20)}
+.ph{position:relative;height:150px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);filter:saturate(1.08);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.09)}
+.ph-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,243,224,.02),rgba(60,74,56,.28))}
+.pill{font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;background:rgba(255,253,244,.9);color:var(--deep);border:1.5px solid rgba(74,124,89,.35);backdrop-filter:blur(4px)}
+.pill.cat{position:absolute;left:12px;bottom:12px}
+.pill.feas{position:absolute;right:12px;bottom:12px;color:#2e7d4f;border-color:rgba(46,125,79,.45);background:rgba(232,248,236,.92)}
+.pill.sample{color:#9a6a12;border-color:rgba(232,165,75,.6)}
+.body{padding:17px 19px 19px}
+.body h2{font-size:16.5px;line-height:1.55;margin:0 0 4px;font-weight:800;color:#33463a}
+.merchant{color:var(--ink2);font-size:13px;margin:0}
+.benefit{font-size:19px;font-weight:800;margin:11px 0 7px;color:var(--deep);background:linear-gradient(transparent 62%,rgba(246,209,134,.75) 62%);display:inline-block;padding:0 2px}
+.cond{color:#5c6a58;font-size:13.5px;line-height:1.7;margin:6px 0 0}
+.foot{display:flex;align-items:center;gap:10px;margin-top:15px;font-size:12.5px}
+.dl{color:var(--ink2)}
+.foot a.srcbtn{margin-left:auto;color:#7c4d16;background:linear-gradient(180deg,#fdf0cd,#f6dd9e);border:1.5px solid rgba(169,116,63,.55);padding:6px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;font-weight:700;transition:all .25s;box-shadow:0 3px 8px rgba(169,116,63,.18)}
+.foot a.srcbtn:hover{background:linear-gradient(180deg,#ffe9ae,#f2cd72);transform:translateY(-1px);box-shadow:0 7px 14px rgba(169,116,63,.28)}
+section.sources{max-width:1060px;margin:8px auto 0;padding:12px 20px 8px;position:relative;z-index:3}
+section.sources h3{font-size:21px;margin:14px 0 4px;color:var(--deep)}
+section.sources .lead{color:var(--ink2);font-size:13.5px;margin:0 0 14px;line-height:1.75}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.src{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;text-decoration:none;color:inherit;transition:all .3s;box-shadow:0 3px 10px rgba(96,84,40,.07)}
+.src:hover{border-color:rgba(232,165,75,.8);transform:translateY(-2px);box-shadow:0 12px 22px rgba(96,84,40,.14)}
+.pill.stype{color:#2b5f86;border-color:rgba(84,140,180,.4);background:rgba(216,238,251,.85);flex:none;margin-top:2px}
+.s-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.s-name{font-weight:800;font-size:14.5px;color:#33463a}
+.s-note{color:var(--ink2);font-size:12.5px;line-height:1.6}
+.s-arrow{margin-left:auto;color:var(--gold);font-size:16px}
+footer{margin-top:34px;background:linear-gradient(180deg,var(--green) ,var(--deep));color:#eaf3e4;position:relative;z-index:3}
+footer .fin{max-width:1060px;margin:0 auto;padding:28px 20px 42px;font-size:12.5px;line-height:1.8}
+footer .fname{font-weight:800;font-size:14px;letter-spacing:.14em;margin-bottom:6px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.cloud{animation:none}}
+</style></head><body>
+<header class="hero"><img class="bg" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=70" alt=""><div class="shade"></div>
+<div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+<svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,72 C240,28 460,108 760,80 C1040,54 1220,102 1440,58 L1440,120 L0,120 Z" fill="#7fb069" opacity=".55"/><path d="M0,98 C260,62 540,116 840,96 C1120,78 1280,106 1440,90 L1440,120 L0,120 Z" fill="#4a7c59" opacity=".9"/></svg>
+<div class="inner"><div class="kicker">🌿 JAPAN DEALS · 風の便り</div>
+<h1>日本薅羊毛情报站<br><span class="gold">像风一样轻盈，把返点收进口袋。</span></h1>
+<p class="sub">面向在日生活的优惠情报站：以信用卡・借记卡返点为主线，兼顾便利店、超市与手机通信。所有条目均对照官方页面核查后收录，条件与期限以官网为准。</p>
+<div class="stats"><div class="stat"><b>14</b><span>掲載中の活動</span></div><div class="stat"><b>20</b><span>情报来源</span></div><div class="stat"><b>2026-10-29</b><span>最終更新</span></div></div>
+</div></header>
+<nav class="bar"><div class="inner"><a class="chip active" data-cat="all" href="#">🍃 全部</a><a class="chip" data-cat="card" href="#">💳 信用卡返点</a><a class="chip" data-cat="conv" href="#">🏪 便利店</a><a class="chip" data-cat="super" href="#">🛒 超市</a><a class="chip" data-cat="mobile" href="#">📱 手机通信</a><a class="chip" data-cat="life" href="#">🎁 其他生活</a><a class="chip right" href="#sources">情报来源 ↓</a></div></nav>
+<div class="notice"><p>🍃 本站情报均对照官方页面核查后收录；金額与条件以官网为准。抓取源与博主清单见页尾「情报来源」。</p></div>
+<main id="list"><article class="card reveal" data-cat="card">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">💳 信用卡返点</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>楽天カード 新規入会＆3回利用で5,000ポイント（常時開催）</h2>
+    <p class="merchant">🌿 楽天カード</p>
+    <p class="benefit">5,000ポイント</p>
+    <p class="cond">入会特典2,000pt（e-NAVIで受取申請）＋利用特典3,000pt（期間限定ポイント、口座振替設定などの条件あり）。在日居住で銀行口座があれば申込可能、ハードル低め。</p>
+    <div class="foot"><span class="dl">⏳ 常設（2026-10-29 公式確認）</span><a class="srcbtn" href="https://www.rakuten-card.co.jp/campaign/rakuten_card/display/b.html" target="_blank" rel="noopener">来源：楽天カード公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="card">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">💳 信用卡返点</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>三井住友カード 対象コンビニ・飲食店でスマホタッチ決済 7%還元</h2>
+    <p class="merchant">🌿 三井住友カード</p>
+    <p class="benefit">7% Vポイント還元（Olive 8%、セブン条件で最大11%）</p>
+    <p class="cond">対象店舗でスマホのVisa/Mastercardタッチ決済のみ対象（カード現物のタッチ決済は対象外）。常設サービス。</p>
+    <div class="foot"><span class="dl">⏳ 常設（2026-10-29 公式確認）</span><a class="srcbtn" href="https://www.smbc-card.com/camp/seven-eleven_vpoint/index.html" target="_blank" rel="noopener">来源：三井住友カード公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="super">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🛒 超市</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>イオン お客さま感謝デー 毎月20日・30日 5%OFF＋新規入会特典</h2>
+    <p class="merchant">🌿 イオン / WAON</p>
+    <p class="benefit">毎月20・30日 5%OFF／イオンカード新規 最大5,000 WAON POINT</p>
+    <p class="cond">感謝デーはイオンマークのカード・WAON・AEON Payでの支払いが対象。日用品のまとめ買いに最適。</p>
+    <div class="foot"><span class="dl">⏳ 毎月20日・30日（常設）</span><a class="srcbtn" href="https://www.waon.net/campaign/thanks_day/" target="_blank" rel="noopener">来源：WAON公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="mobile">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">📱 手机通信</span><span class="pill feas">可行性 中</span></div>
+  <div class="body">
+    <h2>楽天モバイル 三木谷キャンペーン（専用ページ限定）</h2>
+    <p class="merchant">🌿 楽天モバイル</p>
+    <p class="benefit">MNP 最大14,000pt／新規 13,000pt（期間限定pt・分割付与）</p>
+    <p class="cond">必ず専用ページから申込（通常の公式入口では同額にならない）。開通＋Rakuten Link利用などの条件あり、条件は変動しやすいので申込前に公式で再確認。</p>
+    <div class="foot"><span class="dl">⏳ 開催中（2026-10-29 確認）</span><a class="srcbtn" href="https://network.mobile.rakuten.co.jp/campaign/rakuten-employee/entry/vip/" target="_blank" rel="noopener">来源：楽天モバイル公式専用ページ ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="conv">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🏪 便利店</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>セブンイレブン「プライチ」対象商品を買うと無料引換券</h2>
+    <p class="merchant">🌿 セブンイレブン</p>
+    <p class="benefit">対象商品の無料引換券（レシートクーポン）</p>
+    <p class="cond">対象商品を買うとレシートに無料引換券が印字され、次回その商品が無料に。対象商品は毎週火曜に入れ替え。</p>
+    <div class="foot"><span class="dl">⏳ 毎週火曜更新（今輪は2026-10-27開始）</span><a class="srcbtn" href="https://www.sej.co.jp/cmp/plaichi.html" target="_blank" rel="noopener">来源：セブンイレブン公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="conv">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🏪 便利店</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>お試し引換券：ポンタ/dポイントで対象商品がお得に交換</h2>
+    <p class="merchant">🌿 ローソン</p>
+    <p class="benefit">対象商品を通常より少ないポイントで交換（実質半額相当の商品も）</p>
+    <p class="cond">ローソンアプリまたは店内Loppiで発券、発券後30分以内に店舗で引換。先着・数量上限あり、テイクアウトのみ</p>
+    <div class="foot"><span class="dl">⏳ 常時開催（毎週発券）</span><a class="srcbtn" href="https://www.lawson.co.jp/ponta/tsukau/otameshi/oct/1346722_2591.html" target="_blank" rel="noopener">来源：ローソン公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="conv">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🏪 便利店</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>1個買うと、1個もらえる（プライチ）</h2>
+    <p class="merchant">🌿 ファミリーマート</p>
+    <p class="benefit">対象商品1個購入で、もう1個分の無料クーポン</p>
+    <p class="cond">会計時にファミペイアプリのバーコード提示が必要。支払い方法は不問。対象商品は毎週入替</p>
+    <div class="foot"><span class="dl">⏳ クーポン配布 2026-11-02まで／利用 11-09まで</span><a class="srcbtn" href="https://www.family.co.jp/campaign/spot/famipay_1buy1.html" target="_blank" rel="noopener">来源：ファミリーマート公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="conv">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🏪 便利店</span><span class="pill feas">可行性 中</span></div>
+  <div class="body">
+    <h2>45周年 ファミペイ大感謝祭（11/1開始）</h2>
+    <p class="merchant">🌿 ファミリーマート</p>
+    <p class="benefit">お買い物金額全額無料（抽選）など、合計111万円相当の賞品</p>
+    <p class="cond">ファミペイでの参加・抽選制。詳細条件は11月1日のキャンペーン開始時に公式ページで要確認</p>
+    <div class="foot"><span class="dl">⏳ 2026-11-11まで</span><a class="srcbtn" href="https://www.family.co.jp/" target="_blank" rel="noopener">来源：ファミリーマート公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="card">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">💳 信用卡返点</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>新規入会＆利用で合計5,000ポイント</h2>
+    <p class="merchant">🌿 PayPayカード</p>
+    <p class="benefit">合計5,000円相当（通常ポイント3,000pt＋期間限定2,000pt）</p>
+    <p class="cond">対象キャンペーンページ経由の申込が必須（通常の公式トップ経由は特典対象外）。期間限定ポイントはLINEヤフーの一部サービス専用</p>
+    <div class="foot"><span class="dl">⏳ 常設（終了未定・終了1か月前に告知）</span><a class="srcbtn" href="https://www.paypay-card.co.jp/campaign/sign-up/web/yahoo?prem_opt=P_4002.C_StoC0003&amp;sc_i=shp_top_promoVisual_banner_PRMBNR_E-2026-041182" target="_blank" rel="noopener">来源：PayPayカード公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="card">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">💳 信用卡返点</span><span class="pill feas">可行性 中</span></div>
+  <div class="body">
+    <h2>新規入会＆利用特典 合計最大12,400ポイント</h2>
+    <p class="merchant">🌿 dカード（NTTドコモ）</p>
+    <p class="benefit">最大12,400pt（PLATINUM口径）。通常版は入会500pt＋利用1,000pt＋固定費支払いで最大2,400pt</p>
+    <p class="cond">Webエントリー必須、入会当月末までにお得情報メールを通知設定、dポイントクラブ会員であること。特典は期間・用途限定ポイント</p>
+    <div class="foot"><span class="dl">⏳ 常時開催</span><a class="srcbtn" href="https://dcard.docomo.ne.jp/std/campaigns/202607_1cm/cpn-shinkinyuukai-tokuten/index.html" target="_blank" rel="noopener">来源：dカード公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="card">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">💳 信用卡返点</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>新規入会＆利用で最大8,000円分</h2>
+    <p class="merchant">🌿 エポスカード</p>
+    <p class="benefit">最大8,000円分（入会2,000円分＋各種登録・利用で最大6,000円分）</p>
+    <p class="cond">Web申込・郵送受取で2,000円分のエポスポイント（店頭受取は2,000円クーポン）。過去にエポスへ入会したことがある方は対象外。年会費永年無料</p>
+    <div class="foot"><span class="dl">⏳ 常設</span><a class="srcbtn" href="https://www.eposcard.co.jp/admission/index.html" target="_blank" rel="noopener">来源：エポスカード公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="super">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🛒 超市</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>楽天ポイント増量デー（毎週月・土＋特別日）</h2>
+    <p class="merchant">🌿 西友・LIVIN</p>
+    <p class="benefit">楽天ポイント最大7倍（楽天カード・楽天ペイ等との組合せ時）</p>
+    <p class="cond">会計前に楽天ポイントカード/アプリの提示が必要。一部キャンペーンは税抜2,500円以上の買物など条件あり、当月の公式ページで確認</p>
+    <div class="foot"><span class="dl">⏳ 常設（毎週月・土＋月内特別日）</span><a class="srcbtn" href="https://www.seiyu.co.jp/service/rakuten_pointprogram/" target="_blank" rel="noopener">来源：西友公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="super">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🛒 超市</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>オーケークラブ会員割引：現金で食料品 約3%OFF</h2>
+    <p class="merchant">🌿 オーケー（OKストア）</p>
+    <p class="benefit">食料品（酒類除く）が単品ごとに本体価格の3/103割引（約3%）</p>
+    <p class="cond">現金払いのみ対象（カード・電子マネー不可）。会計前に会員カード/アプリ提示。入会金・年会費無料、カード発行料200円、サービスカウンターで即時発行</p>
+    <div class="foot"><span class="dl">⏳ 常設</span><a class="srcbtn" href="https://ok-corporation.jp/feature/okclub.html" target="_blank" rel="noopener">来源：オーケー公式 ↗</a></div>
+  </div>
+</article><article class="card reveal" data-cat="life">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy"><div class="ph-shade"></div>
+    <span class="pill cat">🎁 其他生活</span><span class="pill feas">可行性 高</span></div>
+  <div class="body">
+    <h2>NISA口座開設＆クイズで、もれなく現金2,000円</h2>
+    <p class="merchant">🌿 SBI証券</p>
+    <p class="benefit">現金2,000円（もれなく・抽選ではない）</p>
+    <p class="cond">期間内にNISA口座開設＋クイズ正解＋エントリー。総合口座が必要（同時開設可）。2027年2月末頃に付与予定</p>
+    <div class="foot"><span class="dl">⏳ 2026-12-31まで（口座開設完了は2027-01-15まで）</span><a class="srcbtn" href="https://www.sbisec.co.jp/ETGate/?OutSide=on&amp;_ControlID=WPLETmgR001Control&amp;_PageID=WPLETmgR001Mdtl30&amp;_ActionID=DefaultAID&amp;_DataStoreID=DSWPLETmgR001Control&amp;getFlg=on&amp;burl=search_home&amp;cat1=home&amp;cat2=corporate&amp;dir=corporate&amp;file=irpress/home_prestory261001_021000.html" target="_blank" rel="noopener">来源：SBI証券公式 ↗</a></div>
+  </div>
+</article></main>
+<section class="sources" id="sources"><h3>🌳 情报来源 · 衔接</h3>
+<p class="lead">本站的选题与核查来自以下来源：结构化聚合站用于日常巡检，官方页面用于最终核对，博主与 X 用于速报雷达。点按可直达。</p>
+<div class="src-grid"><a class="src reveal" href="https://crecahub.com/campaigns/" target="_blank" rel="noopener">
+  <span class="pill stype">聚合站</span>
+  <span class="s-main"><span class="s-name">クレカハブ</span><span class="s-note">各社カード活動を集約（実施中541件・2026-10時点）、抽選/先着の区別あり</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://card-db.com/content/campaign.html" target="_blank" rel="noopener">
+  <span class="pill stype">聚合站</span>
+  <span class="s-main"><span class="s-name">カードDB</span><span class="s-note">約490枚の入会特典を終了日順に整理、臨期チェックに最適</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://convenicheck.com/" target="_blank" rel="noopener">
+  <span class="pill stype">聚合站</span>
+  <span class="s-main"><span class="s-name">コンビニチェッカー</span><span class="s-note">三大コンビニの新作・プライチ・活動を近日報レベルで更新</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://poikaku.com/credit" target="_blank" rel="noopener">
+  <span class="pill stype">聚合站</span>
+  <span class="s-main"><span class="s-name">ポイント獲得ナビ</span><span class="s-note">ポイントサイト経由の申込還元を横断比較（モッピー等）</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.youtube.com/channel/UCPI61AHwYWwVbsXEOhPUZOw" target="_blank" rel="noopener">
+  <span class="pill stype">YouTube</span>
+  <span class="s-main"><span class="s-name">おにまるちゃんねる</span><span class="s-note">キャッシュレス速報の代表格、登録者約14.5万・更新頻度が高い</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://twitter.com/onimaru718" target="_blank" rel="noopener">
+  <span class="pill stype">X</span>
+  <span class="s-main"><span class="s-name">おにまる @onimaru718</span><span class="s-note">お得速報の日次ポスト、カード・コード決済・銀行証券まで</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.rakuten-card.co.jp/campaign/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">楽天カード 公式キャンペーン</span><span class="s-note">入会特典と期間限定増額の一次情報</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.smbc-card.com/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">三井住友カード 公式</span><span class="s-note">タッチ決済還元・Vポイントアップの規則変更はここが最速</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.sej.co.jp/cmp/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">セブンイレブン 公式キャンペーン</span><span class="s-note">プライチは毎週火曜に入替</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.family.co.jp/campaign.html" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">ファミリーマート 公式</span><span class="s-note">プライチとファミペイ活動、週二更新中心</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.lawson.co.jp/recommend/sale/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">ローソン 公式お得情報</span><span class="s-note">お得セール・プライチ・アプリ活動</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.aeon.co.jp/benefits/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">イオン / WAON 公式特典</span><span class="s-note">感謝デー（20・30日）とWAON活動の一次情報</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://www.poirich.com/cards/" target="_blank" rel="noopener">
+  <span class="pill stype">聚合站</span>
+  <span class="s-main"><span class="s-name">ポイリッチ</span><span class="s-note">138種のカード×16のポイントサイトを横断比較。「申込前に最高還元をチェック」するならここ</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://nomad-saving.com/" target="_blank" rel="noopener">
+  <span class="pill stype">博客</span>
+  <span class="s-main"><span class="s-name">ノマド的節約術</span><span class="s-note">2011年開設の老舗節約ブログ（運営：松本博樹）。全て実体験ベースの長文攻略、速報より深掘り向き</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://money.blogmura.com/poikatsu/" target="_blank" rel="noopener">
+  <span class="pill stype">博客</span>
+  <span class="s-main"><span class="s-name">ブログ村 ポイ活ランキング</span><span class="s-note">個人ポイ活ブログのPVランキング。新しい書き手を発掘するレーダーとして週1チェック</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://minkabu.jp/creditcard/campaign/" target="_blank" rel="noopener">
+  <span class="pill stype">媒体</span>
+  <span class="s-main"><span class="s-name">みんかぶ クレジットカード</span><span class="s-note">入会キャンペーンのランキングを毎月更新、大手メディアの横断比較</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://moneytaizen.senetwork.co.jp/" target="_blank" rel="noopener">
+  <span class="pill stype">媒体</span>
+  <span class="s-main"><span class="s-name">マネー大全</span><span class="s-note">カード・証券・コード決済のキャンペーンとポイントサイト特典のデータベース型メディア</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://ec.line.me/special/hot-deal/" target="_blank" rel="noopener">
+  <span class="pill stype">官方</span>
+  <span class="s-main"><span class="s-name">LINE ブランドカタログ</span><span class="s-note">LINEポイントの高還元案件とクーポンを日々更新する公式ポータル</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://page.line.me/oa-ls-otoku" target="_blank" rel="noopener">
+  <span class="pill stype">LINE</span>
+  <span class="s-main"><span class="s-name">LINE お得生活入門</span><span class="s-note">友だち約156万人のお得速報アカウント。「知らなきゃ損」系の毎日配信</span></span>
+  <span class="s-arrow">↗</span></a><a class="src reveal" href="https://diamond.jp/zai/category/creditcard" target="_blank" rel="noopener">
+  <span class="pill stype">媒体</span>
+  <span class="s-main"><span class="s-name">ダイヤモンド・ザイ オンライン</span><span class="s-note">出版社系マネー誌のクレカ比較。還元率・年会費の結論検証に</span></span>
+  <span class="s-arrow">↗</span></a></div></section>
+<footer><div class="fin"><div class="fname">🌿 日本薅羊毛情报站</div>本站为个人情报整理，与各发行方无隶属关系；优惠的条件、期限与上限请以各官方页面为准。图片：Unsplash。</div></footer>
+<script>
+function filterCat(c){document.querySelectorAll(".card").forEach(function(el){el.style.display=(c==="all"||el.dataset.cat===c)?"":"none"});document.querySelectorAll(".chip[data-cat]").forEach(function(ch){ch.classList.toggle("active",ch.dataset.cat===c)})}
+document.querySelectorAll(".chip[data-cat]").forEach(function(ch){ch.addEventListener("click",function(e){e.preventDefault();filterCat(ch.dataset.cat);document.getElementById("list").scrollIntoView({behavior:"smooth",block:"start"})})});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.08});
+document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+</script></body></html>

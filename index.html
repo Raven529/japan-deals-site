@@ -295,4 +295,3 @@ document.querySelectorAll(".chip[data-cat]").forEach(function(ch){ch.addEventLis
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{threshold:.08});
 document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
 </script></body></html>
-<!-- mirror-sync-test -->
